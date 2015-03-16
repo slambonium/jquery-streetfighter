@@ -12,7 +12,7 @@ body {
 .main {
   background-color: white;
   margin-top: 110px;
-  padding-left: 100px;
+  padding-left: 0px;
   min-width: 1200px;
   height: 500px;
   position: relative;
@@ -20,14 +20,19 @@ body {
 }
 
 .ryu {
-    /* same dimensions as images */
-    width: 659px;
-    height: 494px;
+  /* same dimensions as images */
+  width: 659px;
+  height: 494px;
+  /* I added below */
+  position: relative;   
 }
 
 .ryu-ready, .ryu-still, .ryu-throwing {
   width: 659px;
   height: 494px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .ryu-ready, .ryu-throwing {
@@ -46,7 +51,7 @@ body {
   background-image: url('../images/ryu-throwing-hadouken.png');
 }
 
-.hadouken, .ryu-ready, .ryu-still, .ryu-throwing {
+.hadouken, .kapow, .ryu-ready, .ryu-still, .ryu-throwing {
   /* somewhat unnecessary since we set containing divs to be exact size of images */
   background-repeat: no-repeat;
 }
@@ -59,8 +64,21 @@ body {
   float: left;
   position: absolute;
   top: 173px;
-  left: 545px;
+  left: 440px;
   z-index: 10;
 }
+
+.kapow {
+  background-image: url('../images/kapow_350x254.png');
+  width: 350px;
+  height: 254px;
+  position: absolute;
+  top: 90px;
+  left: 800px;
+  z-index: 11;
+  opacity: 0;
+}
+
+
 
 
