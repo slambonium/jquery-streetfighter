@@ -70,6 +70,7 @@ $(document).ready(function() {
 
     // animate ryu
     $(".ryu-ready").hide();
+    playHadouken();
     throwHadouken();
     $(".ryu-throwing").show().animate(
       // not changing opacity, just using this to show ryu-throwing more than instantaneously
@@ -81,6 +82,20 @@ $(document).ready(function() {
       });
 
   });
+
+  // play hodouken using jQuery
+  function playHadouken () {
+    $('#hadouken-sound')[0].volume = 0.75;
+    $('#hadouken-sound')[0].load();
+    $('#hadouken-sound')[0].play();
+  }
+
+  // play hadouken using straight JS
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+  // https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
+  function playHadouken2() {
+    document.getElementById('hadouken-sound').play();
+  }
 
   // code below works with just an initial ryu-still class
   // $(".ryu").mouseenter(function() {
