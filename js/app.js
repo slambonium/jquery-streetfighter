@@ -2,7 +2,82 @@
 
 $(document).ready(function() {
 
-  var kapow = function() {
+  var coolShowing = false;
+
+  function playIntro() {
+    $('.sf-logo').fadeIn(2000, function() {
+      $('.sf-logo').delay(1000).fadeOut(1000, function() {
+        $('.segue').fadeIn(2000, function() {
+          $('.segue').delay(1000).fadeOut(1000, function() {
+            $('.jquery-logo').fadeIn(2000, function() {
+              $('.jquery-logo').delay(1000).fadeOut(1000, function() {
+                $('.instructions').fadeIn(2000);
+              });
+            });
+          });
+        });
+      });
+    });
+    
+  }
+
+  function playIntro2() {
+    $('.sf-logo').animate(
+      {'opacity': '1'}, 2000, function() {
+      $('.sf-logo').delay(1000).fadeOut(1000, function() {
+        $('.segue').fadeIn(2000, function() {
+          $('.segue').delay(1000).fadeOut(1000, function() {
+            $('.jquery-logo').fadeIn(2000, function() {
+              $('.jquery-logo').delay(1000).fadeOut(1000, function() {
+                $('.instructions').fadeIn(2000);
+              });
+            });
+          });
+        });
+      });
+    });
+    
+  }    
+
+  function ryuThrow() {
+    // only run throw hadouken animation if NOT holding down x key
+    // if (document.querySelector('.ryu-cool').style.visibility = 'hidden') {
+    //   alert('ryu-cool not showing now');
+    // }
+
+    // clear all animations - in case intro is still running for example
+    // $('*').finish();
+
+    // animate ryu
+    $(".ryu-ready").hide();
+    moveHadouken();
+    $(".ryu-throwing").show().animate(
+      // not changing opacity, just using this to show ryu-throwing more than instantaneously
+      {'opacity': '1'}, 200,
+      function() {
+        // ryu goes back to his ready position
+        $(".ryu-throwing").hide();
+        $(".ryu-ready").show();
+      });    
+  }
+
+  function moveHadouken() {
+    playHadouken();
+    kapow();
+    $('.instructions').hide();
+    // show hadouken and animate it to the right of the screen
+    $('.hadouken').finish().show().animate(
+      {'left': '850px', 'opacity': '0.75'},300,
+      function() {
+        $(this).hide();
+        $(this).css('left', '545px');
+        // reset opacity for next throw
+        $(this).css('opacity', '1');
+        // kapow();
+      });
+  }  
+
+  function kapow() {
     // first, wait for hadouken to ALMOST reach location of kapow image
     $('.kapow').delay(250).animate(
       // now quickly fade in kapow image
@@ -14,26 +89,82 @@ $(document).ready(function() {
             {'opacity': '0'}, 500,
               function() {
                 // just biding time while image opacity goes to zero
+                $('.instructions').delay(250).fadeIn(1250);
           });
     });
-  }; // end kapow function  
+  } // end kapow function
 
-  var throwHadouken = function() {
-    kapow();
-    // show hadouken and animate it to the right of the screen
-    $('.hadouken').finish().show().animate(
-      {'left': '850px', 'opacity': '0.75'},300,
-      function() {
-        $(this).hide();
-        $(this).css('left', '545px');
-        // reset opacity for next show
-        $(this).css('opacity', '1');
-        // kapow();
-      });
-  };
+  // play hodouken using jQuery
+  function playHadouken () {
+    $('#hadouken-sound')[0].volume = 0.75;
+    $('#hadouken-sound')[0].load();
+    $('#hadouken-sound')[0].play();
+  }
+
+  function playHadouken2() {
+    // play hadouken using straight JS
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    // https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video    
+    document.getElementById('hadouken-sound').play();
+  }
+
+  function showCool() {
+      // alert ('the x key was pressed');
+
+      coolShowing = true;
+
+      // clear all animations
+      $('*').finish();
+
+      $('.instructions').hide();
+      $('.no-tread').fadeIn(250);
+      $('.ryu-still').hide();
+      $('.ryu-ready').hide();
+      $('.ryu-cool').show();
+      $('.bad-ass-sound').show();
+      document.querySelector('.bad-ass-sound').volume="0.5";
+      playBadAss();
+  }
+
+  function hideCool() {
+      // alert ('the x key was pressed');
+      coolShowing = false;
+
+      $('.ryu-cool').hide();
+      $('.ryu-still').hide();
+      $('.ryu-ready').show();
+      $('.bad-ass-sound').hide();
+      pauseBadAss();
+      resetBadAss();
+      $('.no-tread').hide();
+      $('.instructions').fadeIn(250);
+  }  
+
+  function playBadAss() {
+    document.querySelector('.bad-ass-sound').play();
+  }
+
+  function pauseBadAss() {
+    document.querySelector('.bad-ass-sound').pause();    
+  }
+
+  function resetBadAss() {
+    // reset to beginning of clip
+    document.querySelector('.bad-ass-sound').currentTime = 0;
+  }
+
+  function hideIntro() {
+    $('.sf-logo').hide();
+    $('.segue').hide();
+    $('.jquery-logo').hide();
+  }
+
+  function showDontTread() {
+    $('.no-tread').fadeIn(500);
+  }  
 
   // still to ready code
-  // NOTE: using mouseenter chained to mouseleave
+  // NOTE: using chained events following
   $(".ryu").mouseenter(function() {
     // while testing use below line
     // alert('mouse entered .ryu div');
@@ -66,36 +197,48 @@ $(document).ready(function() {
   //   $(".ryu-ready").show();
   // })
   .click(function() {
-    // alert("you just clicked!");
 
-    // animate ryu
-    $(".ryu-ready").hide();
-    playHadouken();
-    throwHadouken();
-    $(".ryu-throwing").show().animate(
-      // not changing opacity, just using this to show ryu-throwing more than instantaneously
-      {'opacity': '1'}, 200,
-      function() {
-        // ryu goes back to his ready position
-        $(".ryu-throwing").hide();
-        $(".ryu-ready").show();
-      });
+    // clear all animations
+    $('*').finish();
 
+    if (coolShowing) {
+      hideCool();
+    } else {
+        ryuThrow();
+    }
+
+  })
+  .dblclick(function() {
+    // if (document.querySelector('.ryu-cool').style.visibility = 'hidden') {
+    //   // alert('ryu-cool not showing now');
+    //   showCool();
+    // } else {
+    //   hideCool();
+    // }
+
+      // clear all animations
+      $('*').finish();    
+
+    if (coolShowing) {
+      hideCool();
+    } else {
+        showCool();
+    }
   });
 
-  // play hodouken using jQuery
-  function playHadouken () {
-    $('#hadouken-sound')[0].volume = 0.75;
-    $('#hadouken-sound')[0].load();
-    $('#hadouken-sound')[0].play();
-  }
+  $('body').keydown(function(whichKey) {
+    if (whichKey.which === 88) {
+      showCool();
+    }
+  });
 
-  // play hadouken using straight JS
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-  // https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
-  function playHadouken2() {
-    document.getElementById('hadouken-sound').play();
-  }
+  $('body').keyup(function(whichKey) {
+    if (whichKey.which === 88) {
+      hideCool();
+    }
+  });
+
+  playIntro2();
 
   // code below works with just an initial ryu-still class
   // $(".ryu").mouseenter(function() {

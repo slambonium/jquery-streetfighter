@@ -1,19 +1,25 @@
 /* main.css */
 
 /* temp styling while laying out */
-* {
+/** {
   outline: red 1px solid;
+}*/
+
+@font-face {
+    font-family: comical;
+    src: url('../fonts/animeace2_reg.otf');
 }
 
 body {
   background-color: #000;
+  font-family: comical;
 }
 
 .main {
   background-color: white;
   margin-top: 110px;
   padding-left: 0px;
-  min-width: 1200px;
+  min-width: 1341px;
   height: 500px;
   position: relative;
   z-index: 1;
@@ -24,10 +30,10 @@ body {
   width: 659px;
   height: 494px;
   /* I added below */
-  position: relative;   
+  position: relative; 
 }
 
-.ryu-ready, .ryu-still, .ryu-throwing {
+.ryu-ready, .ryu-still, .ryu-throwing, .ryu-cool {
   width: 659px;
   height: 494px;
   position: absolute;
@@ -35,7 +41,7 @@ body {
   left: 0;
 }
 
-.ryu-ready, .ryu-throwing {
+.ryu-ready, .ryu-throwing, .ryu-cool {
   display: none;
 } 
 
@@ -49,6 +55,10 @@ body {
 
 .ryu-throwing {
   background-image: url('../images/ryu-throwing-hadouken.png');
+}
+
+.ryu-cool {
+  background-image: url('../images/ryu-cool.gif');
 }
 
 .hadouken, .kapow, .ryu-ready, .ryu-still, .ryu-throwing {
@@ -79,6 +89,95 @@ body {
   opacity: 0;
 }
 
+.bad-ass-sound {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 12;
+}
 
+.main-rhs {
+  position: absolute;
+  top: 0;
+  left: 660px;
+  /* width of widest image - sf-logo.png */
+  width: 682px;
+}
+
+.sf-logo {
+  position: absolute;  
+  background-image: url('../images/sf-logo.png');
+  width: 682px;
+  height: 314px;
+  /* below: (500px-314px)/2 */
+  top: 93px;
+  left: 0;
+  /*display: none;*/
+  opacity: 0;
+}
+
+.jquery-logo {
+  position: absolute;  
+  background-image: url('../images/jquery-logo.png');
+  width: 500px;
+  height: 172px;
+  top: 164px;
+  left: 91px;
+  display: none;
+}
+
+.segue {
+  position: absolute;
+  width: 600px;
+  /*height: 100px;*/
+  top: 180px;
+  left: 41px;
+  text-align: center;
+  color: #f00;
+  font-size: 3em;
+  line-height: 1.5em;
+  display: none;
+}
+
+.instructions {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  top: 50px;
+  left: 41px;
+  font-size: 1.5em;
+  line-height: 1.75em;
+  display: none;
+}
+
+.instructions p {
+  width: 320px;
+  position: absolute;
+}
+
+.instructions span {
+  color: #f00;
+}
+
+.instructions p:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.instructions p:nth-child(2) {
+  bottom: 0;
+  right: 0;
+}
+
+.no-tread {
+  position: absolute;
+  background-image: url('../images/Dont-Tread-On-Me_517x400.png');
+  width: 517px;
+  height: 400px;
+  top: 50px;
+  left: 82px;
+  display: none;
+}
 
 
