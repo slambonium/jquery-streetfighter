@@ -122,6 +122,8 @@ $(document).ready(function() {
       $('.ryu-ready').hide();
       $('.ryu-cool').show();
       $('.bad-ass-sound').show();
+      $('.bad-ass-sound').removeClass('.elementHide');
+      $('.bad-ass-sound').addClass('.elementShow');
       document.querySelector('.bad-ass-sound').volume="0.5";
       playBadAss();
   }
@@ -134,6 +136,7 @@ $(document).ready(function() {
       $('.ryu-still').hide();
       $('.ryu-ready').show();
       $('.bad-ass-sound').hide();
+      $('.bad-ass-sound').addClass('.elementHide');
       pauseBadAss();
       resetBadAss();
       $('.no-tread').hide();
@@ -199,7 +202,7 @@ $(document).ready(function() {
   //   $(".hadouken").hide();
   //   $(".ryu-ready").show();
   // })
-  .click(function() {
+  .on('click', function() {
 
     // clear all animations
     $('*').finish();

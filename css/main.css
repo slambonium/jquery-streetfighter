@@ -193,4 +193,11 @@ body {
   font-size: 1.2rem;
 }
 
+.elementShow {
+  display: block;
+}
+
+.elementHide {
+
+}
 
