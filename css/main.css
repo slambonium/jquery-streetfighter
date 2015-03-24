@@ -143,8 +143,8 @@ body {
 .instructions {
   position: absolute;
   width: 600px;
-  height: 400px;
-  top: 50px;
+  height: 460px;
+  top: 1rem;
   left: 41px;
   font-size: 1.5em;
   line-height: 1.75em;
@@ -152,7 +152,6 @@ body {
 }
 
 .instructions p {
-  width: 320px;
   position: absolute;
 }
 
@@ -161,23 +160,40 @@ body {
 }
 
 .instructions p:nth-child(1) {
+  width: 300px;
   top: 0;
   left: 0;
 }
 
 .instructions p:nth-child(2) {
+  width: 300px;
   bottom: 0;
   right: 0;
 }
 
 .no-tread {
   position: absolute;
-  background-image: url('../images/Dont-Tread-On-Me_517x400.png');
+  /* background: color position/size repeat origin clip attachment image|initial|inherit; */
+  background: center bottom no-repeat url('../images/Dont-Tread-On-Me_517x400.png');
   width: 517px;
-  height: 400px;
-  top: 50px;
+  height: 460px;
+  top: 25px;
   left: 82px;
   display: none;
+  z-index: 20;
 }
 
+.no-tread p {
+  font-size: 1.2rem;
+}
+
+.initiate-cool {
+  position: absolute;
+  display: inline-block;
+  /*bottom: 0;*/
+  top: 460px;
+  left: 1em;
+  font-size: 2em;
+  border: solid 1px #000;
+}
 

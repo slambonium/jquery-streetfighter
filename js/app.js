@@ -168,13 +168,16 @@ $(document).ready(function() {
   $(".ryu").mouseenter(function() {
     // while testing use below line
     // alert('mouse entered .ryu div');
-
-    $(".ryu-still").hide();
-    $(".ryu-ready").show();
+    if (!coolShowing) {
+      $(".ryu-still").hide();
+      $(".ryu-ready").show();
+    }
   })
   .mouseleave(function() {
-    $(".ryu-ready").hide();    
-    $(".ryu-still").show();    
+    if (!coolShowing) {
+      $(".ryu-ready").hide();    
+      $(".ryu-still").show();
+    }    
   })
   // skipping .mousedown + .mouseup code in favor of using click
   // NOTE that .click is still in the 'chain' of events
@@ -207,23 +210,14 @@ $(document).ready(function() {
         ryuThrow();
     }
 
-  })
-  .dblclick(function() {
-    // if (document.querySelector('.ryu-cool').style.visibility = 'hidden') {
-    //   // alert('ryu-cool not showing now');
-    //   showCool();
-    // } else {
-    //   hideCool();
-    // }
+  });
 
-      // clear all animations
-      $('*').finish();    
+  $('.instructions p:nth-child(2)').click(function() {
+    showCool();
+  });
 
-    if (coolShowing) {
-      hideCool();
-    } else {
-        showCool();
-    }
+  $('.no-tread').on('click', function() {
+    hideCool();
   });
 
   $('body').keydown(function(whichKey) {
