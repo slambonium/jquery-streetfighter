@@ -89,14 +89,6 @@ body {
   opacity: 0;
 }
 
-.bad-ass-sound {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
-}
-
 .main-rhs {
   position: absolute;
   top: 0;
@@ -177,7 +169,7 @@ body {
 
 .no-tread {
   position: absolute;
-  background: center bottom no-repeat url('../images/Dont-Tread-On-Me_517x400.png');
+  background: center 50px/80% no-repeat url('../images/Dont-Tread-On-Me_517x400.png');
   width: 517px;
   height: 460px;
   top: 25px;
@@ -193,11 +185,13 @@ body {
   font-size: 1.2rem;
 }
 
-.elementShow {
-  display: block;
+.bad-ass-sound {
+  position: absolute;
+  bottom: 0;
+  /*left: 4rem;*/
+  z-index: 99;
 }
 
-.elementHide {
 
-}
+
 

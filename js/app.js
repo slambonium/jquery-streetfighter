@@ -4,6 +4,15 @@ $(document).ready(function() {
 
   var coolShowing = false;
 
+  // dynamically center audio controls based on its width and container's width
+  // var leftSpace = Math.floor( ( $('.no-tread').width() - $('.audio-control').width() ) / 2 );
+  // $('.bad-ass-sound').css('left', leftSpace);
+
+  function playIntroSound() {
+    document.querySelector('#intro-sound-byte').volume="0.75";
+    document.querySelector('#intro-sound-byte').play();
+  }
+
   function playIntro() {
     $('.sf-logo').fadeIn(2000, function() {
       $('.sf-logo').delay(1000).fadeOut(1000, function() {
@@ -109,41 +118,47 @@ $(document).ready(function() {
   }
 
   function showCool() {
-      // alert ('the x key was pressed');
+    // alert ('the x key was pressed');
 
-      coolShowing = true;
+    coolShowing = true;
 
-      // clear all animations
-      $('*').finish();
+    // clear all animations
+    $('*').finish();
 
-      $('.instructions').hide();
-      $('.no-tread').fadeIn(250);
-      $('.ryu-still').hide();
-      $('.ryu-ready').hide();
-      $('.ryu-cool').show();
-      $('.bad-ass-sound').show();
-      $('.bad-ass-sound').removeClass('.elementHide');
-      $('.bad-ass-sound').addClass('.elementShow');
-      document.querySelector('.bad-ass-sound').volume="0.5";
-      playBadAss();
+    $('.instructions').hide();
+    $('.no-tread').fadeIn(250);
+    $('.ryu-still').hide();
+    $('.ryu-ready').hide();
+    $('.ryu-cool').show();
+    // $('.bad-ass-sound').show();
+    // $('.bad-ass-sound').removeClass('.elementHide');
+    // $('.bad-ass-sound').addClass('.elementShow');
+    $('.sound-div').show();
+    document.querySelector('.bad-ass-sound').volume="0.5";
+    playBadAss();
+    // dynamically center audio controls based on its width and container's width
+    var leftSpace = Math.floor( ( $('.no-tread').width() - $('.audio-control').width() ) / 2 );
+    $('.bad-ass-sound').css('left', leftSpace);
   }
 
   function hideCool() {
-      // alert ('the x key was pressed');
-      coolShowing = false;
+    // alert ('the x key was pressed');
+    coolShowing = false;
 
-      $('.ryu-cool').hide();
-      $('.ryu-still').hide();
-      $('.ryu-ready').show();
-      $('.bad-ass-sound').hide();
-      $('.bad-ass-sound').addClass('.elementHide');
-      pauseBadAss();
-      resetBadAss();
-      $('.no-tread').hide();
-      $('.instructions').fadeIn(250);
+    $('.ryu-cool').hide();
+    $('.ryu-still').hide();
+    $('.ryu-ready').show();
+
+    // $('.bad-ass-sound').hide();
+    // $('.bad-ass-sound').addClass('.elementHide');
+    $('.sound-div').hide();
+    pauseBadAss();
+    resetBadAss();
+    $('.no-tread').hide();
+    $('.instructions').fadeIn(250);
   }  
 
-  function playBadAss() {
+  function playBadAss() {    
     document.querySelector('.bad-ass-sound').play();
   }
 
@@ -166,10 +181,9 @@ $(document).ready(function() {
     $('.no-tread').fadeIn(500);
   }  
 
-  // still to ready code
   // NOTE: using chained events following
   $(".ryu").mouseenter(function() {
-    // while testing use below line
+    // still to ready code
     // alert('mouse entered .ryu div');
     if (!coolShowing) {
       $(".ryu-still").hide();
@@ -177,6 +191,7 @@ $(document).ready(function() {
     }
   })
   .mouseleave(function() {
+    // ready to still code
     if (!coolShowing) {
       $(".ryu-ready").hide();    
       $(".ryu-still").show(); 
