@@ -94,7 +94,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 12;
+  z-index: 99;
 }
 
 .main-rhs {
@@ -168,16 +168,29 @@ body {
 .instructions p:nth-child(2) {
   bottom: 0;
   right: 0;
+  z-index: 99;
+}
+
+.instructions p:nth-child(2):hover {
+  cursor: pointer;
 }
 
 .no-tread {
   position: absolute;
-  background-image: url('../images/Dont-Tread-On-Me_517x400.png');
+  background: center bottom no-repeat url('../images/Dont-Tread-On-Me_517x400.png');
   width: 517px;
-  height: 400px;
-  top: 50px;
+  height: 460px;
+  top: 25px;
   left: 82px;
   display: none;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.no-tread p {
+  position: absolute;
+  top: 0;
+  font-size: 1.2rem;
 }
 
 
