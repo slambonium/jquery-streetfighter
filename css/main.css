@@ -89,14 +89,6 @@ body {
   opacity: 0;
 }
 
-.bad-ass-sound {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 12;
-}
-
 .main-rhs {
   position: absolute;
   top: 0;
@@ -169,12 +161,17 @@ body {
   width: 300px;
   bottom: 0;
   right: 0;
+  z-index: 99;
+}
+
+.instructions p:nth-child(2):hover {
+  cursor: pointer;
 }
 
 .no-tread {
   position: absolute;
   /* background: color position/size repeat origin clip attachment image|initial|inherit; */
-  background: center bottom no-repeat url('../images/Dont-Tread-On-Me_517x400.png');
+  background: center 50px/80% no-repeat url('../images/Dont-Tread-On-Me_517x400.png');
   width: 517px;
   height: 460px;
   top: 25px;
@@ -196,4 +193,25 @@ body {
   font-size: 2em;
   border: solid 1px #000;
 }
+=======
+  cursor: pointer;
+  z-index: 99;
+}
+
+.no-tread p {
+  position: absolute;
+  top: 0;
+  font-size: 1.2rem;
+}
+
+.bad-ass-sound {
+  position: absolute;
+  bottom: 0;
+  /*left: 4rem;*/
+  z-index: 99;
+}
+
+
+
+>>>>>>> master
 
