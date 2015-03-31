@@ -9,8 +9,14 @@ $(document).ready(function() {
   // $('.bad-ass-sound').css('left', leftSpace);
 
   function playIntroSound() {
+    // document.querySelector('.intro-sound').style.display = 'block';
+    $('.intro-sound').show();
+    // dynamically center audio controls based on its width and container's width
+    var leftSpace = Math.floor( ( $('.intro-sound').width() - $('#intro-sound-byte').width() ) / 2 );
+    $('#intro-sound-byte').css('left', leftSpace);
     document.querySelector('#intro-sound-byte').volume="0.75";
     document.querySelector('#intro-sound-byte').play();
+    $('.intro-sound').delay(20000).fadeOut(250);
   }
 
   function playIntro() {
@@ -125,6 +131,10 @@ $(document).ready(function() {
     // clear all animations
     $('*').finish();
 
+    // stop intro sound
+    pauseIntroSound();
+    resetIntroSound();
+
     $('.instructions').hide();
     $('.no-tread').fadeIn(250);
     $('.ryu-still').hide();
@@ -156,7 +166,15 @@ $(document).ready(function() {
     resetBadAss();
     $('.no-tread').hide();
     $('.instructions').fadeIn(250);
-  }  
+  }
+
+  function pauseIntroSound() {
+    document.querySelector('#intro-sound-byte').pause();
+  } 
+
+  function resetIntroSound() {
+    document.querySelector('#intro-sound-byte').currentTime = 0;
+  } 
 
   function playBadAss() {    
     document.querySelector('.bad-ass-sound').play();
@@ -249,6 +267,8 @@ $(document).ready(function() {
       hideCool();
     }
   });
+
+  playIntroSound();
 
   playIntro2();
 
