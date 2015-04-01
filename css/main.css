@@ -1,10 +1,5 @@
 /* main.css */
 
-/* temp styling while laying out */
-/** {
-  outline: red 1px solid;
-}*/
-
 @font-face {
     font-family: comical;
     src: url('../fonts/animeace2_reg.otf');
@@ -23,6 +18,19 @@ body {
   height: 500px;
   position: relative;
   z-index: 1;
+}
+
+.intro-sound {
+  /*border: 1px solid red;*/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+#intro-sound-byte {
+  position: absolute;
+  bottom: 0;
 }
 
 .ryu {
@@ -95,6 +103,9 @@ body {
   left: 660px;
   /* width of widest image - sf-logo.png */
   width: 682px;
+  /* height of container - .main */
+  height: 500px;
+  /*border: 1px solid green;*/
 }
 
 .sf-logo {
@@ -135,8 +146,8 @@ body {
 .instructions {
   position: absolute;
   width: 600px;
-  height: 460px;
-  top: 1rem;
+  height: 400px;
+  top: 30px;
   left: 41px;
   font-size: 1.5em;
   line-height: 1.75em;
@@ -144,6 +155,7 @@ body {
 }
 
 .instructions p {
+  width: 320px;
   position: absolute;
 }
 
@@ -152,13 +164,11 @@ body {
 }
 
 .instructions p:nth-child(1) {
-  width: 300px;
   top: 0;
   left: 0;
 }
 
 .instructions p:nth-child(2) {
-  width: 300px;
   bottom: 0;
   right: 0;
   z-index: 99;
@@ -170,32 +180,16 @@ body {
 
 .no-tread {
   position: absolute;
-  /* background: color position/size repeat origin clip attachment image|initial|inherit; */
   background: center 50px/80% no-repeat url('../images/Dont-Tread-On-Me_517x400.png');
   width: 517px;
+  /*width: 100%;*/
   height: 460px;
   top: 25px;
   left: 82px;
   display: none;
-  z-index: 20;
-}
-
-.no-tread p {
-  font-size: 1.2rem;
-}
-
-.initiate-cool {
-  position: absolute;
-  display: inline-block;
-  /*bottom: 0;*/
-  top: 460px;
-  left: 1em;
-  font-size: 2em;
-  border: solid 1px #000;
-}
-=======
   cursor: pointer;
   z-index: 99;
+  /*border: 1px solid blue;*/
 }
 
 .no-tread p {
@@ -213,5 +207,4 @@ body {
 
 
 
->>>>>>> master
 
